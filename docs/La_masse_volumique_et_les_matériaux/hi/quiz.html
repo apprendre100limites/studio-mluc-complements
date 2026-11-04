@@ -1,0 +1,24 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>प्रश्नोत्तरी - घनत्व और सामग्री</title><style>
+:root{--fond:#fbfaf7;--texte:#1d2430;--doux:#5b6574;--trait:#d9d6cc;--accent:#1f6fb2;--carte:#fff}
+@media (prefers-color-scheme:dark){:root{--fond:#12161c;--texte:#e8ecf2;--doux:#9aa5b5;--trait:#2c3440;--accent:#6bb6ff;--carte:#1a2029}}
+*{box-sizing:border-box}body{margin:0;background:var(--fond);color:var(--texte);font:18px/1.55 -apple-system,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:28px 18px 60px}
+.marque{font-size:13px;letter-spacing:.08em;color:var(--doux);text-transform:uppercase}
+h1{font-size:30px;line-height:1.2;margin:.3em 0 .1em}h2{font-size:21px;margin:1.6em 0 .4em;color:var(--accent)}
+.sous{color:var(--doux);margin:0 0 1.4em}
+.carte{background:var(--carte);border:1px solid var(--trait);border-radius:12px;padding:14px 18px;margin:12px 0}
+.retenir{border-left:5px solid var(--accent)}.attention{border-left:5px solid #d9822b}
+ul{padding-left:1.2em}li{margin:.35em 0}
+button{font:inherit;padding:8px 16px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+button.sec{background:transparent;color:var(--accent)}
+a{color:var(--accent)}
+@media print{body{background:#fff;color:#000;font-size:12pt}.noprint{display:none}main{padding:0}.carte{break-inside:avoid}}
+</style></head><body><main><div class="marque">M'Luc · Science · साइकिल 4 · स्तर 3</div><h1>प्रश्नोत्तरी</h1><p class="sous">घनत्व और सामग्री</p><div id="q"></div><p class="noprint"><button onclick="verifier()">मेरा जवाब चेक करें</button> <button class="sec" onclick="refaire()">शुरू</button></p><h2 id="score"></h2></main><script>const Q=[{"question": "घनत्व क्या है?", "choix": ["D - माप की इकाई", "C - बड़े पैमाने पर विभाजित वॉल्यूम", "B - मास वॉल्यूम से विभाजित", "A - मास वॉल्यूम से गुणा"], "bonne": 2, "explication": "घनत्व मात्रा से विभाजित द्रव्यमान है।"}, {"question": "घनत्व की माप की इकाई क्या है?", "choix": ["C - Kilogram प्रति लीटर", "A - Kilogram प्रति घन मीटर", "B - ग्राम प्रति घन सेंटीमीटर", "D - Gram per millilitre"], "bonne": 1, "explication": "घनत्व प्रति घन मीटर, या प्रति घन सेंटीमीटर ग्राम में व्यक्त किया जाता है।"}, {"question": "क्या उदाहरण एल्यूमीनियम के घनत्व की गणना करने के लिए प्रयोग किया जाता है?", "choix": ["सी - एक 3 सेमी साइड क्यूब जिसमें 63 ग्राम होता है", "डी - 84 ग्राम के द्रव्यमान के साथ एक 4 सेमी साइड क्यूब", "A - 1 सेमी साइड क्यूब जिसमें 2.7 ग्राम है", "बी - 21.6 ग्राम के द्रव्यमान के साथ एक 2 सेमी साइड क्यूब"], "bonne": 3, "explication": "एक दो-centimetre पक्ष एल्यूमीनियम घन आठ घन सेंटीमीटर की मात्रा और बीस-एक decimal छह ग्राम का एक द्रव्यमान है।"}, {"question": "किस सामग्री का घनत्व 19.3 ग्राम प्रति घन सेंटीमीटर है?", "choix": ["C - कॉपर", "D - लीड", "B - गोल्ड", "A - लोहा"], "bonne": 2, "explication": "गोल्ड का घनत्व 19 दशमलव तीन ग्राम प्रति घन सेंटीमीटर है।"}, {"question": "वीडियो में किस मिश्र धातु का उल्लेख किया गया है?", "choix": ["D - लीड", "A - स्टील", "B - कॉपर", "C - गोल्ड"], "bonne": 1, "explication": "उदाहरण के लिए, स्टील कुछ कार्बन के साथ लोहा है।"}, {"question": "क्या संपत्ति है?", "choix": ["C - इसमें शुद्ध धातु से भिन्न गुण हैं", "B - यह हमेशा शुद्ध धातु से कठिन है", "D - यह घनत्व नहीं बदलता", "A - यह हमेशा शुद्ध धातु से हल्का होता है"], "bonne": 0, "explication": "एक मिश्र धातु अन्य तत्वों के साथ एक धातु का मिश्रण है। यह अक्सर शुद्ध धातु से अधिक प्रतिरोधी होता है।"}, {"question": "135 ग्राम प्रति 50 घन सेंटीमीटर की वस्तु के घनत्व की गणना क्या है?", "choix": ["C - 2.9 g/cm3", "A - 2.7 g/cm3", "B - 2.8 g / cm3", "D - 3.0 g / cm3"], "bonne": 1, "explication": "घनत्व की गणना द्रव्यमान को मात्रा से विभाजित करके की जाती है: 135 50 से विभाजित है।"}];const box=document.getElementById('q');let h='';
+Q.forEach((q,i)=>{h+='<div class="carte"><b>'+(i+1)+'. '+q.question.replace(/</g,'&lt;')+'</b>';
+q.choix.forEach((c,k)=>{h+='<label style="display:block;margin:.4em 0"><input type="radio" name="q'+i+'" value="'+k+'"> '+c.replace(/</g,'&lt;')+'</label>'});
+h+='<div class="ex" id="e'+i+'" style="display:none;margin-top:.5em"></div></div>'});
+box.innerHTML=h;
+function verifier(){let ok=0;Q.forEach((q,i)=>{const r=document.querySelector('input[name=q'+i+']:checked');const e=document.getElementById('e'+i);
+e.style.display='block';if(r&&+r.value===q.bonne){ok++;e.innerHTML='✅ अधिकार '+q.explication}else{e.innerHTML='❌ सही उत्तर: <b>'+q.choix[q.bonne]+'</b>. '+q.explication}});
+document.getElementById('score').textContent='स्कोर: '+ok+' / '+Q.length;window.scrollTo(0,document.body.scrollHeight)}
+function refaire(){location.reload()}</script></body></html>
