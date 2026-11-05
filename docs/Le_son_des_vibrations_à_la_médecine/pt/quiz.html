@@ -1,0 +1,24 @@
+<!doctype html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Questionário — Som: das vibrações à medicina</title><style>
+:root{--fond:#fbfaf7;--texte:#1d2430;--doux:#5b6574;--trait:#d9d6cc;--accent:#1f6fb2;--carte:#fff}
+@media (prefers-color-scheme:dark){:root{--fond:#12161c;--texte:#e8ecf2;--doux:#9aa5b5;--trait:#2c3440;--accent:#6bb6ff;--carte:#1a2029}}
+*{box-sizing:border-box}body{margin:0;background:var(--fond);color:var(--texte);font:18px/1.55 -apple-system,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:28px 18px 60px}
+.marque{font-size:13px;letter-spacing:.08em;color:var(--doux);text-transform:uppercase}
+h1{font-size:30px;line-height:1.2;margin:.3em 0 .1em}h2{font-size:21px;margin:1.6em 0 .4em;color:var(--accent)}
+.sous{color:var(--doux);margin:0 0 1.4em}
+.carte{background:var(--carte);border:1px solid var(--trait);border-radius:12px;padding:14px 18px;margin:12px 0}
+.retenir{border-left:5px solid var(--accent)}.attention{border-left:5px solid #d9822b}
+ul{padding-left:1.2em}li{margin:.35em 0}
+button{font:inherit;padding:8px 16px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+button.sec{background:transparent;color:var(--accent)}
+a{color:var(--accent)}
+@media print{body{background:#fff;color:#000;font-size:12pt}.noprint{display:none}main{padding:0}.carte{break-inside:avoid}}
+</style></head><body><main><div class="marque">M'Luc · Ciência · Ciclo 4 · Nível 5</div><h1>Quiz</h1><p class="sous">Som: das vibrações à medicina</p><div id="q"></div><p class="noprint"><button onclick="verifier()">Verifica as minhas respostas.</button> <button class="sec" onclick="refaire()">Reiniciar</button></p><h2 id="score"></h2></main><script>const Q=[{"question": "O que cria um som de acordo com o texto?", "choix": ["D) Vibração", "C) Uma luz", "B) Silêncio", "A) Um movimento"], "bonne": 0, "explication": "Um som vem sempre de uma vibração."}, {"question": "Qual é o papel das moléculas de ar no movimento do som?", "choix": ["D) Estão a arder.", "A) Eles solidificam", "B) Estão a afastar-se e a aproximar-se", "C) Permanecem imóvel"], "bonne": 2, "explication": "Eles apertam e depois afastam-se, e é o caminho para trás e para a frente que transporta a informação."}, {"question": "Que meio é necessário para que o som se espalhe?", "choix": ["A) Espaço", "C) Um ambiente material", "B) O vácuo", "D) Vazio espacial"], "bonne": 1, "explication": "Um som precisa de um meio material para se espalhar."}, {"question": "Que velocidade aproximada atinge o som no ar?", "choix": ["A) 300 m/ s", "B) 340 m/ s", "C) 370 m/ s", "D) 400 m/ s"], "bonne": 1, "explication": "No ar, o som corre trezentos e quarenta metros por segundo."}];const box=document.getElementById('q');let h='';
+Q.forEach((q,i)=>{h+='<div class="carte"><b>'+(i+1)+'. '+q.question.replace(/</g,'&lt;')+'</b>';
+q.choix.forEach((c,k)=>{h+='<label style="display:block;margin:.4em 0"><input type="radio" name="q'+i+'" value="'+k+'"> '+c.replace(/</g,'&lt;')+'</label>'});
+h+='<div class="ex" id="e'+i+'" style="display:none;margin-top:.5em"></div></div>'});
+box.innerHTML=h;
+function verifier(){let ok=0;Q.forEach((q,i)=>{const r=document.querySelector('input[name=q'+i+']:checked');const e=document.getElementById('e'+i);
+e.style.display='block';if(r&&+r.value===q.bonne){ok++;e.innerHTML='✅ Certo. '+q.explication}else{e.innerHTML='❌ A resposta certa: <b>'+q.choix[q.bonne]+'</b>. '+q.explication}});
+document.getElementById('score').textContent='Pontuação: '+ok+' / '+Q.length;window.scrollTo(0,document.body.scrollHeight)}
+function refaire(){location.reload()}</script></body></html>
