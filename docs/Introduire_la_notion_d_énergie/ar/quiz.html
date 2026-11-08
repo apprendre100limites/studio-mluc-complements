@@ -1,0 +1,24 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>كروز - إدخال مفهوم الطاقة</title><style>
+:root{--fond:#fbfaf7;--texte:#1d2430;--doux:#5b6574;--trait:#d9d6cc;--accent:#1f6fb2;--carte:#fff}
+@media (prefers-color-scheme:dark){:root{--fond:#12161c;--texte:#e8ecf2;--doux:#9aa5b5;--trait:#2c3440;--accent:#6bb6ff;--carte:#1a2029}}
+*{box-sizing:border-box}body{margin:0;background:var(--fond);color:var(--texte);font:18px/1.55 -apple-system,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:28px 18px 60px}
+.marque{font-size:13px;letter-spacing:.08em;color:var(--doux);text-transform:uppercase}
+h1{font-size:30px;line-height:1.2;margin:.3em 0 .1em}h2{font-size:21px;margin:1.6em 0 .4em;color:var(--accent)}
+.sous{color:var(--doux);margin:0 0 1.4em}
+.carte{background:var(--carte);border:1px solid var(--trait);border-radius:12px;padding:14px 18px;margin:12px 0}
+.retenir{border-left:5px solid var(--accent)}.attention{border-left:5px solid #d9822b}
+ul{padding-left:1.2em}li{margin:.35em 0}
+button{font:inherit;padding:8px 16px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+button.sec{background:transparent;color:var(--accent)}
+a{color:var(--accent)}
+@media print{body{background:#fff;color:#000;font-size:12pt}.noprint{display:none}main{padding:0}.carte{break-inside:avoid}}
+</style></head><body><main><div class="marque">M'Luc · العلوم · الصف السابع · 12–13 سنة</div><h1>Quiz</h1><p class="sous">إدخال مفهوم الطاقة</p><div id="q"></div><p class="noprint"><button onclick="verifier()">تحقق من إجاباتي</button> <button class="sec" onclick="refaire()">Restart</button></p><h2 id="score"></h2></main><script>const Q=[{"question": "ما الخطأ في قلم رصاص؟", "choix": ["Cold", "الصمت", "الضوء", "الطاقة"], "bonne": 3, "explication": "ساعة متأرجحة لديها طاقة"}, {"question": "عندما يكون الخماسي في قمة عرقه، ما هو سيء للحظة؟", "choix": ["درجة الحرارة", "ارتفاعه", "السرعة", "كتلة"], "bonne": 2, "explication": "وعلى قمة السباق، يرتفع الحد الأقصى للسلك وسرعته صفر للحظة."}, {"question": "من أين تأتي طاقة الجسم؟", "choix": ["النوم", "الغذاء", "الرياح", "من الشمس"], "bonne": 1, "explication": "المدخلات هي طاقة الطعام"}, {"question": "ما علاقة الآلة بطاقة المصدر؟", "choix": ["إنه يدمره", "إنها تخلقها", "إنها تتهرب", "إنها تحوله"], "bonne": 3, "explication": "الآلة لا تخلق الطاقة إنها تحول مصدرها"}, {"question": "أي من هذه القوائم يحتوي على مصادر متجددة فقط؟", "choix": ["الفحم والنفط والشمس", "النفط والفحم والغاز", "الشمس والرياح والمياه", "الغاز والماء والنفط"], "bonne": 2, "explication": "Some sources are renewed as quickly as they are used, such as the sun, wind or water: they are renewable."}, {"question": "في النص، أي نوع من الطاقة هو الطعام؟", "choix": ["الكهرباء", "المادة الكيميائية", "Solar", "النووية"], "bonne": 1, "explication": "طاقة الطعام، المادة الكيميائية، تصبح طاقة الحركة في عضلاتك."}, {"question": "عندما يتوقف الحداد بسبب الاحتكاك ماذا يحدث لطاقته؟", "choix": ["يتحول إلى الضوء", "يتم نقله إلى الهواء، الذي يسخن قليلا جدا", "انها تتبخر في الهواء", "تختفي تماماً"], "bonne": 1, "explication": "بسبب الاحتكاك، تم نقله إلى الهواء، الذي تسخن بشكل طفيف جدا."}, {"question": "لماذا ينفق الجسم الطاقة؟", "choix": ["تخزين الأغذية وإنتاج الضوء", "إيجاد مصادر جديدة للطاقة", "للتحرك والتفكير و الحفاظ على درجة حرارته", "لتنمو ونم وتتنفس فقط"], "bonne": 2, "explication": "الإحتياجات هي الطاقة التي ينفقها جسدك للتحرك والتفكير و الحفاظ على درجة حرارته"}, {"question": "لماذا يستخدم توربين الرياح مصدر طاقة متجدد؟", "choix": ["لأنه لا يصدر ضوضاء", "لأنه مصنوع من المعدن", "لأنها تنتج الحرارة", "لأن الرياح تتغير بأسرع ما نستخدمها"], "bonne": 3, "explication": "لأن الرياح تتغير بأسرع ما نستخدمها"}, {"question": "وفقاً للإستنتاج، ماذا يحدث مع الطاقة؟", "choix": ["يهرب مع الوقت", "تم تدميرها بواسطة الاحتكاك", "يتم صنعه بواسطة الآلات", "ينتقل ويتحول دون أن يختفي"], "bonne": 3, "explication": "الطاقة يتم نقلها وتحويلها دون أن تختفي"}];const box=document.getElementById('q');let h='';
+Q.forEach((q,i)=>{h+='<div class="carte"><b>'+(i+1)+'. '+q.question.replace(/</g,'&lt;')+'</b>';
+q.choix.forEach((c,k)=>{h+='<label style="display:block;margin:.4em 0"><input type="radio" name="q'+i+'" value="'+k+'"> '+c.replace(/</g,'&lt;')+'</label>'});
+h+='<div class="ex" id="e'+i+'" style="display:none;margin-top:.5em"></div></div>'});
+box.innerHTML=h;
+function verifier(){let ok=0;Q.forEach((q,i)=>{const r=document.querySelector('input[name=q'+i+']:checked');const e=document.getElementById('e'+i);
+e.style.display='block';if(r&&+r.value===q.bonne){ok++;e.innerHTML='✅ صحيح '+q.explication}else{e.innerHTML='❌ الجواب الصحيح: <b>'+q.choix[q.bonne]+'</b>. '+q.explication}});
+document.getElementById('score').textContent='اسكت: '+ok+' / '+Q.length;window.scrollTo(0,document.body.scrollHeight)}
+function refaire(){location.reload()}</script></body></html>
