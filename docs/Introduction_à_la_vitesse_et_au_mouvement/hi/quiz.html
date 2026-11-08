@@ -1,0 +1,24 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>प्रश्नोत्तरी - गति और आंदोलन का परिचय</title><style>
+:root{--fond:#fbfaf7;--texte:#1d2430;--doux:#5b6574;--trait:#d9d6cc;--accent:#1f6fb2;--carte:#fff}
+@media (prefers-color-scheme:dark){:root{--fond:#12161c;--texte:#e8ecf2;--doux:#9aa5b5;--trait:#2c3440;--accent:#6bb6ff;--carte:#1a2029}}
+*{box-sizing:border-box}body{margin:0;background:var(--fond);color:var(--texte);font:18px/1.55 -apple-system,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:28px 18px 60px}
+.marque{font-size:13px;letter-spacing:.08em;color:var(--doux);text-transform:uppercase}
+h1{font-size:30px;line-height:1.2;margin:.3em 0 .1em}h2{font-size:21px;margin:1.6em 0 .4em;color:var(--accent)}
+.sous{color:var(--doux);margin:0 0 1.4em}
+.carte{background:var(--carte);border:1px solid var(--trait);border-radius:12px;padding:14px 18px;margin:12px 0}
+.retenir{border-left:5px solid var(--accent)}.attention{border-left:5px solid #d9822b}
+ul{padding-left:1.2em}li{margin:.35em 0}
+button{font:inherit;padding:8px 16px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+button.sec{background:transparent;color:var(--accent)}
+a{color:var(--accent)}
+@media print{body{background:#fff;color:#000;font-size:12pt}.noprint{display:none}main{padding:0}.carte{break-inside:avoid}}
+</style></head><body><main><div class="marque">M'Luc · विज्ञान · कक्षा 7 · आयु 12–13 वर्ष</div><h1>प्रश्नोत्तरी</h1><p class="sous">गति और आंदोलन का परिचय</p><div id="q"></div><p class="noprint"><button onclick="verifier()">मेरा जवाब चेक करें</button> <button class="sec" onclick="refaire()">शुरू</button></p><h2 id="score"></h2></main><script>const Q=[{"question": "एक trajectory क्या है?", "choix": ["आंदोलन की दिशा", "यात्रा करने का समय", "चलती वस्तु द्वारा कब्जा कर लिया सभी लगातार पदों", "कुल दूरी यात्रा"], "bonne": 2, "explication": "पाठ के अनुसार, ट्रेजेक्टरी \"स्थितियों का सेट यह क्रमिक रूप से रहता है\" है।"}, {"question": "क्या उदाहरण सीधे आंदोलन से मेल खाता है?", "choix": ["नियमित गति सवारी", "सही सड़क पर कार रोशनी", "एक बड़ा पहिया फली", "एक कार जो एक सीधी रेखा में तेजी लाती है"], "bonne": 1, "explication": "पाठ इंगित करता है कि कार हेडलाइट्स, रात में, एक सही सड़क पर सीधे आंदोलन के अनुरूप है।"}, {"question": "हम औसत गति की गणना कैसे करते हैं?", "choix": ["अवधि तक दूरी को गुणा करके", "दूरी और अवधि जोड़ना", "दूरी की लंबाई घटाकर", "अवधि तक दूरी विभाजित करके"], "bonne": 3, "explication": "पाठ का कहना है कि औसत गति \"समय पर विभाजित दूरी\" है।"}, {"question": "एक सीधा प्रस्ताव में क्या तत्व बदल सकता है?", "choix": ["प्रबंधन", "यात्रा", "गति मूल्य", "आंदोलन की दिशा"], "bonne": 2, "explication": "पाठ बताता है कि सीधे गति में, \"दिशा बदल नहीं जाती है, लेकिन मान बदल सकता है\"।"}, {"question": "क्यों मध्य में ब्रेक की तुलना में एक मोड़ में प्रवेश करने से पहले धीमा होना बेहतर है?", "choix": ["क्योंकि यह अधिक किफायती है।", "क्योंकि हम सड़क से बाहर निकलने का जोखिम उठाते हैं", "क्योंकि पहियों ने अपनी पकड़ खो दी", "क्योंकि दिशा तेजी से बदल जाती है"], "bonne": 1, "explication": "पाठ का कहना है कि मध्य में ब्रेकिंग करके, \"आपका जोखिम बाहर निकलता है\"।"}, {"question": "सड़क रडार मापन क्या करता है?", "choix": ["वाहनों के बीच दूरी", "वाहन की गति", "त्वरण समय", "यातायात प्रबंधन"], "bonne": 1, "explication": "पाठ इंगित करता है कि \"रैडर वाहन की गति\" को मापता है।"}, {"question": "साइकिल चालक एक घंटे और तीस में 30 किलोमीटर की यात्रा करता है। उनकी औसत गति क्या है?", "choix": ["प्रति घंटे तीस किलोमीटर", "प्रति घंटे चालीस किलोमीटर", "प्रति घंटे बीस किलोमीटर", "प्रति घंटे दस किलोमीटर"], "bonne": 2, "explication": "पाठ से पता चलता है कि तीस एक दशमलव पांच द्वारा विभाजित बीस देता है, इसलिए औसत गति प्रति घंटे बीस किलोमीटर है।"}];const box=document.getElementById('q');let h='';
+Q.forEach((q,i)=>{h+='<div class="carte"><b>'+(i+1)+'. '+q.question.replace(/</g,'&lt;')+'</b>';
+q.choix.forEach((c,k)=>{h+='<label style="display:block;margin:.4em 0"><input type="radio" name="q'+i+'" value="'+k+'"> '+c.replace(/</g,'&lt;')+'</label>'});
+h+='<div class="ex" id="e'+i+'" style="display:none;margin-top:.5em"></div></div>'});
+box.innerHTML=h;
+function verifier(){let ok=0;Q.forEach((q,i)=>{const r=document.querySelector('input[name=q'+i+']:checked');const e=document.getElementById('e'+i);
+e.style.display='block';if(r&&+r.value===q.bonne){ok++;e.innerHTML='✅ अधिकार '+q.explication}else{e.innerHTML='❌ सही उत्तर: <b>'+q.choix[q.bonne]+'</b>. '+q.explication}});
+document.getElementById('score').textContent='स्कोर: '+ok+' / '+Q.length;window.scrollTo(0,document.body.scrollHeight)}
+function refaire(){location.reload()}</script></body></html>
