@@ -1,0 +1,24 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quiz — Volumen y misa: Measuring Matter</title><style>
+:root{--fond:#fbfaf7;--texte:#1d2430;--doux:#5b6574;--trait:#d9d6cc;--accent:#1f6fb2;--carte:#fff}
+@media (prefers-color-scheme:dark){:root{--fond:#12161c;--texte:#e8ecf2;--doux:#9aa5b5;--trait:#2c3440;--accent:#6bb6ff;--carte:#1a2029}}
+*{box-sizing:border-box}body{margin:0;background:var(--fond);color:var(--texte);font:18px/1.55 -apple-system,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:28px 18px 60px}
+.marque{font-size:13px;letter-spacing:.08em;color:var(--doux);text-transform:uppercase}
+h1{font-size:30px;line-height:1.2;margin:.3em 0 .1em}h2{font-size:21px;margin:1.6em 0 .4em;color:var(--accent)}
+.sous{color:var(--doux);margin:0 0 1.4em}
+.carte{background:var(--carte);border:1px solid var(--trait);border-radius:12px;padding:14px 18px;margin:12px 0}
+.retenir{border-left:5px solid var(--accent)}.attention{border-left:5px solid #d9822b}
+ul{padding-left:1.2em}li{margin:.35em 0}
+button{font:inherit;padding:8px 16px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+button.sec{background:transparent;color:var(--accent)}
+a{color:var(--accent)}
+@media print{body{background:#fff;color:#000;font-size:12pt}.noprint{display:none}main{padding:0}.carte{break-inside:avoid}}
+</style></head><body><main><div class="marque">M'Luc · Ciencias · 1.º de ESO · 12-13 años</div><h1>Quiz</h1><p class="sous">Volumen y masa: materia de medición</p><div id="q"></div><p class="noprint"><button onclick="verifier()">Revisa mis respuestas</button> <button class="sec" onclick="refaire()">Restart</button></p><h2 id="score"></h2></main><script>const Q=[{"question": "¿Qué unidad se utiliza en el sistema internacional para medir el volumen?", "choix": ["C) Liter", "D) gramo", "B) metro cúbico", "A) kilogramo"], "bonne": 2, "explication": "El volumen se mide en metros cúbicos en el sistema internacional."}, {"question": "¿Cómo se determina el volumen de una roca usando una pieza de prueba graduada?", "choix": ["B) Se lee la graduación por debajo del nivel líquido", "A) Se lee la graduación por encima del nivel líquido", "C) Leer la graduación justo antes de bucear la roca", "D) La diferencia entre el volumen antes y después de la inmersión de roca se lee"], "bonne": 3, "explication": "El volumen de la roca es la diferencia entre el volumen de agua antes y después del buceo."}, {"question": "¿Cuál es la masa de un litro de agua?", "choix": ["B) 100 gramos", "A) 1000 gramos", "D) 1 gramo", "C) 10 gramos"], "bonne": 1, "explication": "Un litro de agua tiene una masa de un kilogramo, así que 1000 gramos."}, {"question": "¿Cuál es el volumen de un litro de agua en mililitros?", "choix": ["D) 10.000 mililitros", "B) 100 mililitros", "C) 1000 mililitros", "A) 10 mililitros"], "bonne": 2, "explication": "Un litro es igual a mil mililitros."}, {"question": "¿Qué sustancia tiene una densidad diferente del agua?", "choix": ["(B) Oil", "A) Plumnas", "C) Ceillou", "D) Agua"], "bonne": 0, "explication": "El aceite tiene una densidad diferente que el agua."}, {"question": "¿Cuál es la masa de un mililitro de agua?", "choix": ["D) 100 gramos", "B) 1 gramo", "A) 0,1 gramos", "C) 10 gramos"], "bonne": 1, "explication": "Un mililitro de agua pesa un gramo."}, {"question": "¿Por qué el aceite flota en el agua?", "choix": ["C) Porque tiene una densidad más grande", "B) Porque es más ligera", "D) Porque tiene una densidad más pequeña", "A) Porque es más pesado"], "bonne": 2, "explication": "El aceite flota en el agua porque tiene una densidad más pequeña."}, {"question": "¿Cuál es la masa de un litro de agua en gramos?", "choix": ["B) 1000 gramos", "D) 1020 gramos", "A) 920 gramos", "C) 980 gramos"], "bonne": 0, "explication": "Un litro de agua tiene una masa de un kilogramo, así que 1000 gramos."}];const box=document.getElementById('q');let h='';
+Q.forEach((q,i)=>{h+='<div class="carte"><b>'+(i+1)+'. '+q.question.replace(/</g,'&lt;')+'</b>';
+q.choix.forEach((c,k)=>{h+='<label style="display:block;margin:.4em 0"><input type="radio" name="q'+i+'" value="'+k+'"> '+c.replace(/</g,'&lt;')+'</label>'});
+h+='<div class="ex" id="e'+i+'" style="display:none;margin-top:.5em"></div></div>'});
+box.innerHTML=h;
+function verifier(){let ok=0;Q.forEach((q,i)=>{const r=document.querySelector('input[name=q'+i+']:checked');const e=document.getElementById('e'+i);
+e.style.display='block';if(r&&+r.value===q.bonne){ok++;e.innerHTML='✅ Cierto. '+q.explication}else{e.innerHTML='❌ La respuesta correcta: <b>'+q.choix[q.bonne]+'</b>. '+q.explication}});
+document.getElementById('score').textContent='Puntuación: '+ok+' / '+Q.length;window.scrollTo(0,document.body.scrollHeight)}
+function refaire(){location.reload()}</script></body></html>
