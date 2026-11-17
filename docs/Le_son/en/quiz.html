@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quiz — Sound</title><style>
+:root{--fond:#fbfaf7;--texte:#1d2430;--doux:#5b6574;--trait:#d9d6cc;--accent:#1f6fb2;--carte:#fff}
+@media (prefers-color-scheme:dark){:root{--fond:#12161c;--texte:#e8ecf2;--doux:#9aa5b5;--trait:#2c3440;--accent:#6bb6ff;--carte:#1a2029}}
+*{box-sizing:border-box}body{margin:0;background:var(--fond);color:var(--texte);font:18px/1.55 -apple-system,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:28px 18px 60px}
+.marque{font-size:13px;letter-spacing:.08em;color:var(--doux);text-transform:uppercase}
+h1{font-size:30px;line-height:1.2;margin:.3em 0 .1em}h2{font-size:21px;margin:1.6em 0 .4em;color:var(--accent)}
+.sous{color:var(--doux);margin:0 0 1.4em}
+.carte{background:var(--carte);border:1px solid var(--trait);border-radius:12px;padding:14px 18px;margin:12px 0}
+.retenir{border-left:5px solid var(--accent)}.attention{border-left:5px solid #d9822b}
+ul{padding-left:1.2em}li{margin:.35em 0}
+button{font:inherit;padding:8px 16px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+button.sec{background:transparent;color:var(--accent)}
+a{color:var(--accent)}
+@media print{body{background:#fff;color:#000;font-size:12pt}.noprint{display:none}main{padding:0}.carte{break-inside:avoid}}
+</style></head><body><main><div class="marque">M'Luc · Science · Year 8 · ages 12–13</div><h1>Quiz</h1><p class="sous">Sound</p><div id="q"></div><p class="noprint"><button onclick="verifier()">Check my answers</button> <button class="sec" onclick="refaire()">Restart</button></p><h2 id="score"></h2></main><script>const Q=[{"question": "What is a sound?", "choix": ["A sound of nature", "A radio signal", "Vibration", "An object that produces light"], "bonne": 2, "explication": "A sound is a vibration: a very fast coming and going of the particles of matter."}, {"question": "Why doesn't the sound spread in a vacuum?", "choix": ["He's too weak.", "There is no material to transmit the sound", "The waves are absorbed by space", "It is replaced by light"], "bonne": 1, "explication": "In the void, the sound does not spread. It needs a material medium: air, water or solid."}, {"question": "In which medium the sound travels the fastest?", "choix": ["Air", "The vacuum", "Water", "Steel"], "bonne": 3, "explication": "The sound goes faster in water than in air, and even faster in steel."}, {"question": "At 20 degrees, how fast does the sound advance in the air?", "choix": ["300 m/ s", "400 m/s", "340 m/ s", "250 m/ s"], "bonne": 2, "explication": "In the air, at twenty degrees, it advances to about three hundred and forty meters per second."}, {"question": "How many meters runs the sound between lightning and your ear when you count five seconds?", "choix": ["2000 m", "1700 m", "1000 m", "500 m"], "bonne": 1, "explication": "He travelled about a thousand seven hundred meters."}, {"question": "From what sound level can prolonged exposure damage your hearing?", "choix": ["90 dB", "100 dB", "80 dB", "85 dB"], "bonne": 3, "explication": "From about eighty-five decibels, prolonged exposure can permanently damage your hearing."}, {"question": "Which instrument measures the sound level?", "choix": ["Sound meter", "Hygrometer", "Thermometer", "Barometer"], "bonne": 0, "explication": "The sound level is measured in decibels, with a sonometer."}, {"question": "Which professional uses ultrasound to see inside the body?", "choix": ["Sound engineer", "Echographist", "Doctor ORL", "Audioprosthetist"], "bonne": 1, "explication": "An ultrasound artist uses ultrasound to see inside the body."}, {"question": "In what areas is sound used?", "choix": ["Health, music, cinema, safety at work and boat sonars", "Cinema", "Music", "Health"], "bonne": 0, "explication": "These concepts are used in health, music, cinema, safety at work and boat sonars."}];const box=document.getElementById('q');let h='';
+Q.forEach((q,i)=>{h+='<div class="carte"><b>'+(i+1)+'. '+q.question.replace(/</g,'&lt;')+'</b>';
+q.choix.forEach((c,k)=>{h+='<label style="display:block;margin:.4em 0"><input type="radio" name="q'+i+'" value="'+k+'"> '+c.replace(/</g,'&lt;')+'</label>'});
+h+='<div class="ex" id="e'+i+'" style="display:none;margin-top:.5em"></div></div>'});
+box.innerHTML=h;
+function verifier(){let ok=0;Q.forEach((q,i)=>{const r=document.querySelector('input[name=q'+i+']:checked');const e=document.getElementById('e'+i);
+e.style.display='block';if(r&&+r.value===q.bonne){ok++;e.innerHTML='✅ Right. '+q.explication}else{e.innerHTML='❌ The right answer: <b>'+q.choix[q.bonne]+'</b>. '+q.explication}});
+document.getElementById('score').textContent='Score: '+ok+' / '+Q.length;window.scrollTo(0,document.body.scrollHeight)}
+function refaire(){location.reload()}</script></body></html>
