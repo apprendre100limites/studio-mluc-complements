@@ -1,0 +1,24 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>प्रश्नोत्तरी — हवा में क्या है?</title><style>
+:root{--fond:#fbfaf7;--texte:#1d2430;--doux:#5b6574;--trait:#d9d6cc;--accent:#1f6fb2;--carte:#fff}
+@media (prefers-color-scheme:dark){:root{--fond:#12161c;--texte:#e8ecf2;--doux:#9aa5b5;--trait:#2c3440;--accent:#6bb6ff;--carte:#1a2029}}
+*{box-sizing:border-box}body{margin:0;background:var(--fond);color:var(--texte);font:18px/1.55 -apple-system,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:28px 18px 60px}
+.marque{font-size:13px;letter-spacing:.08em;color:var(--doux);text-transform:uppercase}
+h1{font-size:30px;line-height:1.2;margin:.3em 0 .1em}h2{font-size:21px;margin:1.6em 0 .4em;color:var(--accent)}
+.sous{color:var(--doux);margin:0 0 1.4em}
+.carte{background:var(--carte);border:1px solid var(--trait);border-radius:12px;padding:14px 18px;margin:12px 0}
+.retenir{border-left:5px solid var(--accent)}.attention{border-left:5px solid #d9822b}
+ul{padding-left:1.2em}li{margin:.35em 0}
+button{font:inherit;padding:8px 16px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+button.sec{background:transparent;color:var(--accent)}
+a{color:var(--accent)}
+@media print{body{background:#fff;color:#000;font-size:12pt}.noprint{display:none}main{padding:0}.carte{break-inside:avoid}}
+</style></head><body><main><div class="marque">M'Luc · विज्ञान · कक्षा 8 · आयु 13–14 वर्ष</div><h1>प्रश्नोत्तरी</h1><p class="sous">क्या हम हवा में पाते हैं?</p><div id="q"></div><p class="noprint"><button onclick="verifier()">मेरा जवाब चेक करें</button> <button class="sec" onclick="refaire()">शुरू</button></p><h2 id="score"></h2></main><script>const Q=[{"question": "नाइट्रोजन में हवा की लगभग संरचना क्या है?", "choix": ["A) 21%", "D) 50%", "C) 1%", "B) 78%"], "bonne": 3, "explication": "एयर में नाइट्रोजन का लगभग सत्तर प्रतिशत होता है।"}, {"question": "क्या गैस जंग के लिए जिम्मेदार है?", "choix": ["(D) कार्बन डाइऑक्साइड", "(A) नाइट्रोजन", "(B) Dioxygen", "(C) Argon"], "bonne": 2, "explication": "Dioxygen जंग के लिए जिम्मेदार है।"}, {"question": "हवा के एक लीटर का अनुमानित द्रव्यमान क्या है?", "choix": ["A) 0.001 g", "D) 2 g", "B) 1 g", "C) 1.2 g"], "bonne": 3, "explication": "एक लीटर हवा में लगभग एक दशमलव दो से एक दशमलव तीन ग्राम होता है।"}, {"question": "वीडियो देखने के बाद हवा में डाइऑक्सीजन का अनुपात क्या है?", "choix": ["C) 1%", "D) 50%", "B) 78%", "A) 21%"], "bonne": 3, "explication": "डायऑक्सीजन हवा के लगभग बीस प्रतिशत का प्रतिनिधित्व करता है।"}, {"question": "यह दिखाने के लिए कि हवा में द्रव्यमान क्या है?", "choix": ["C) एक गेंद और एक संतुलन", "D) एक गुब्बारा और एक गिलास पानी", "A balloon swollen and deflated.", "B) बैलेंस और वजन"], "bonne": 0, "explication": "हम deflated गुब्बारे का वजन करते हैं, फिर हम इसे किसी अन्य सामग्री को जोड़ने के बिना बढ़ाते हैं और हम इसे फिर से वजन देते हैं।"}, {"question": "3x4x2.5 मीटर के कमरे में हवा का लगभग द्रव्यमान क्या है?", "choix": ["B) 10 किग्रा", "C) 200 किलो", "D) 500 किग्रा", "A) 36 किग्रा"], "bonne": 3, "explication": "तीन-दर-चार मीटर ऊंचे कमरे में, दो-दर- पचास मीटर ऊंचा, तीस हजार लीटर हवा, लगभग तीस-छह किलोग्राम हैं।"}];const box=document.getElementById('q');let h='';
+Q.forEach((q,i)=>{h+='<div class="carte"><b>'+(i+1)+'. '+q.question.replace(/</g,'&lt;')+'</b>';
+q.choix.forEach((c,k)=>{h+='<label style="display:block;margin:.4em 0"><input type="radio" name="q'+i+'" value="'+k+'"> '+c.replace(/</g,'&lt;')+'</label>'});
+h+='<div class="ex" id="e'+i+'" style="display:none;margin-top:.5em"></div></div>'});
+box.innerHTML=h;
+function verifier(){let ok=0;Q.forEach((q,i)=>{const r=document.querySelector('input[name=q'+i+']:checked');const e=document.getElementById('e'+i);
+e.style.display='block';if(r&&+r.value===q.bonne){ok++;e.innerHTML='✅ अधिकार '+q.explication}else{e.innerHTML='❌ सही उत्तर: <b>'+q.choix[q.bonne]+'</b>. '+q.explication}});
+document.getElementById('score').textContent='स्कोर: '+ok+' / '+Q.length;window.scrollTo(0,document.body.scrollHeight)}
+function refaire(){location.reload()}</script></body></html>
