@@ -1,0 +1,24 @@
+<!doctype html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>प्रश्नोत्तरी - तुर्की में डोलिन: जब चूना पत्थर हमारे पैरों के नीचे गायब हो जाता है</title><style>
+:root{--fond:#fbfaf7;--texte:#1d2430;--doux:#5b6574;--trait:#d9d6cc;--accent:#1f6fb2;--carte:#fff}
+@media (prefers-color-scheme:dark){:root{--fond:#12161c;--texte:#e8ecf2;--doux:#9aa5b5;--trait:#2c3440;--accent:#6bb6ff;--carte:#1a2029}}
+*{box-sizing:border-box}body{margin:0;background:var(--fond);color:var(--texte);font:18px/1.55 -apple-system,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:28px 18px 60px}
+.marque{font-size:13px;letter-spacing:.08em;color:var(--doux);text-transform:uppercase}
+h1{font-size:30px;line-height:1.2;margin:.3em 0 .1em}h2{font-size:21px;margin:1.6em 0 .4em;color:var(--accent)}
+.sous{color:var(--doux);margin:0 0 1.4em}
+.carte{background:var(--carte);border:1px solid var(--trait);border-radius:12px;padding:14px 18px;margin:12px 0}
+.retenir{border-left:5px solid var(--accent)}.attention{border-left:5px solid #d9822b}
+ul{padding-left:1.2em}li{margin:.35em 0}
+button{font:inherit;padding:8px 16px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+button.sec{background:transparent;color:var(--accent)}
+a{color:var(--accent)}
+@media print{body{background:#fff;color:#000;font-size:12pt}.noprint{display:none}main{padding:0}.carte{break-inside:avoid}}
+</style></head><body><main><div class="marque">M'Luc · विज्ञान </div><h1>प्रश्नोत्तरी</h1><p class="sous">तुर्की में Dolines: जब चूना पत्थर हमारे पैरों के नीचे गायब हो जाता है</p><div id="q"></div><p class="noprint"><button onclick="verifier()">मेरा जवाब चेक करें</button> <button class="sec" onclick="refaire()">शुरू</button></p><h2 id="score"></h2></main><script>const Q=[{"question": "किस प्रकार की चट्टान अक्सर dolines के गठन में शामिल होती है?", "choix": ["बेसाल्ट", "ग्रेनाइट", "क्वार्ट्ज", "कैल्क्री"], "bonne": 3, "explication": "यह चट्टान अक्सर चूना पत्थर है।"}, {"question": "कौन सा वायु घटक बारिश को थोड़ा अम्लीय बनाता है?", "choix": ["कार्बन डाइऑक्साइड", "Azote", "सोडियम", "ऑक्सीजन"], "bonne": 0, "explication": "बारिश हवा और विशेष रूप से मिट्टी से गुजरती है, जहां यह कार्बन डाइऑक्साइड लोड करती है।"}, {"question": "जब सिरका चूना पत्थर पर डाला जाता है तो क्या गैस बच जाती है?", "choix": ["हाइड्रोजन", "ऑक्सीजन", "Azote", "कार्बन डाइऑक्साइड"], "bonne": 3, "explication": "बुलबुले तुरंत बनाते हैं। कार्बन डाइऑक्साइड escaping है।"}, {"question": "कोन्या बेसिन में कितने dolines की पहचान की गई है?", "choix": ["लगभग सात सौ", "लगभग पाँच सौ", "लगभग छह सौ", "लगभग आठ सौ"], "bonne": 0, "explication": "शोधकर्ताओं ने कोन्या के बंद बेसिन में लगभग सात सौ रिकॉर्ड किए हैं।"}, {"question": "Karapınar में देखने की अधिकतम गहराई क्या है?", "choix": ["3 से 10 मीटर", "10 से 100 मीटर", "50 से 200 मीटर", "3 से 50 मीटर"], "bonne": 3, "explication": "उनकी गहराई तीन से पचास मीटर तक है।"}, {"question": "Cennet doline में कितने कदम हैं?", "choix": ["452", "500", "300", "350"], "bonne": 0, "explication": "हम चार सौ पचास-दो चरणों से नीचे जाते हैं।"}, {"question": "Cennet doline की अनुमानित लंबाई क्या है?", "choix": ["150 मीटर", "450 मीटर", "250 मीटर", "350 मीटर"], "bonne": 2, "explication": "स्वर्ग लगभग दो सौ पचास मीटर लंबा है।"}, {"question": "कोन्या में पानी की बचत के रूप में किस सिंचाई तकनीक का हवाला दिया जाता है?", "choix": ["बाढ़ सिंचाई", "बूँद-बूँद सिंचाई", "फरो द्वारा सिंचाई", "छिड़काव सिंचाई"], "bonne": 1, "explication": "कुशल सिंचाई विधियां, जैसे टपकना।"}];const box=document.getElementById('q');let h='';
+Q.forEach((q,i)=>{h+='<div class="carte"><b>'+(i+1)+'. '+q.question.replace(/</g,'&lt;')+'</b>';
+q.choix.forEach((c,k)=>{h+='<label style="display:block;margin:.4em 0"><input type="radio" name="q'+i+'" value="'+k+'"> '+c.replace(/</g,'&lt;')+'</label>'});
+h+='<div class="ex" id="e'+i+'" style="display:none;margin-top:.5em"></div></div>'});
+box.innerHTML=h;
+function verifier(){let ok=0;Q.forEach((q,i)=>{const r=document.querySelector('input[name=q'+i+']:checked');const e=document.getElementById('e'+i);
+e.style.display='block';if(r&&+r.value===q.bonne){ok++;e.innerHTML='✅ अधिकार '+q.explication}else{e.innerHTML='❌ सही उत्तर: <b>'+q.choix[q.bonne]+'</b>. '+q.explication}});
+document.getElementById('score').textContent='स्कोर: '+ok+' / '+Q.length;window.scrollTo(0,document.body.scrollHeight)}
+function refaire(){location.reload()}</script></body></html>

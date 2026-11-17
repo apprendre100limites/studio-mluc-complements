@@ -1,0 +1,24 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quiz - Dolinen in der Türkei: Wenn Kalkstein unter unseren Füßen verschwindet</title><style>
+:root{--fond:#fbfaf7;--texte:#1d2430;--doux:#5b6574;--trait:#d9d6cc;--accent:#1f6fb2;--carte:#fff}
+@media (prefers-color-scheme:dark){:root{--fond:#12161c;--texte:#e8ecf2;--doux:#9aa5b5;--trait:#2c3440;--accent:#6bb6ff;--carte:#1a2029}}
+*{box-sizing:border-box}body{margin:0;background:var(--fond);color:var(--texte);font:18px/1.55 -apple-system,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:28px 18px 60px}
+.marque{font-size:13px;letter-spacing:.08em;color:var(--doux);text-transform:uppercase}
+h1{font-size:30px;line-height:1.2;margin:.3em 0 .1em}h2{font-size:21px;margin:1.6em 0 .4em;color:var(--accent)}
+.sous{color:var(--doux);margin:0 0 1.4em}
+.carte{background:var(--carte);border:1px solid var(--trait);border-radius:12px;padding:14px 18px;margin:12px 0}
+.retenir{border-left:5px solid var(--accent)}.attention{border-left:5px solid #d9822b}
+ul{padding-left:1.2em}li{margin:.35em 0}
+button{font:inherit;padding:8px 16px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+button.sec{background:transparent;color:var(--accent)}
+a{color:var(--accent)}
+@media print{body{background:#fff;color:#000;font-size:12pt}.noprint{display:none}main{padding:0}.carte{break-inside:avoid}}
+</style></head><body><main><div class="marque">M'Luc · Naturwissenschaften </div><h1>Quiz</h1><p class="sous">Dolinen in der Türkei: Wenn Kalkstein unter unseren Füßen verschwindet</p><div id="q"></div><p class="noprint"><button onclick="verifier()">Überprüfen Sie meine Antworten</button> <button class="sec" onclick="refaire()">Neustart</button></p><h2 id="score"></h2></main><script>const Q=[{"question": "Welche Art von Gestein ist am häufigsten an der Bildung von Dolinen beteiligt?", "choix": ["Basalt", "Granit", "Quarz", "Calcary"], "bonne": 3, "explication": "Dieser Stein ist sehr oft Kalkstein."}, {"question": "Welche Luftkomponente macht den Regen leicht sauer?", "choix": ["Kohlendioxid", "Azote", "Natrium", "Sauerstoff"], "bonne": 0, "explication": "Der Regen fließt durch die Luft und vor allem den Boden, wo er Kohlendioxid lädt."}, {"question": "Welches Gas entweicht, wenn Essig auf Kalkstein gegossen wird?", "choix": ["Wasserstoff", "Sauerstoff", "Azote", "Kohlendioxid"], "bonne": 3, "explication": "Blasen bilden sich sofort. Kohlendioxid entweicht."}, {"question": "Wie viele Dolinen wurden im gesamten Konya-Becken identifiziert?", "choix": ["etwa siebenhundert", "Etwa fünfhundert", "Etwa sechshundert", "Etwa achthundert"], "bonne": 0, "explication": "Forscher ... haben etwa siebenhundert im geschlossenen Becken von Konya registriert."}, {"question": "Was ist die maximale Tiefe der Dolinen in Karapınar beobachtet?", "choix": ["3 bis 10 Meter", "10 bis 100 Meter", "50 bis 200 Meter", "3 bis 50 Meter"], "bonne": 3, "explication": "ihre Tiefe von drei bis fünfzig Metern."}, {"question": "Wie viele Schritte gibt es, um in die Cennet-Doline zu gelangen?", "choix": ["452", "500", "300", "350 mm"], "bonne": 0, "explication": "Wir gehen um vierhundertzweiundfünfzig Stufen hinunter."}, {"question": "Wie lang ist die Cennet Doline ungefähr?", "choix": ["150 Meter", "450 Meter", "250 Meter", "350 Meter"], "bonne": 2, "explication": "Das Paradies ist etwa zweihundertfünfzig Meter lang."}, {"question": "Welche Bewässerungstechnik wird in Konya als Wassersparen bezeichnet?", "choix": ["Überschwemmungsbewässerung", "Tröpfchenbewässerung", "Bewässerung mit Furchen", "Sprinklerbewässerung"], "bonne": 1, "explication": "die wassersparenden Bewässerungsmethoden, wie die Tröpfchenbewässerung."}];const box=document.getElementById('q');let h='';
+Q.forEach((q,i)=>{h+='<div class="carte"><b>'+(i+1)+'. '+q.question.replace(/</g,'&lt;')+'</b>';
+q.choix.forEach((c,k)=>{h+='<label style="display:block;margin:.4em 0"><input type="radio" name="q'+i+'" value="'+k+'"> '+c.replace(/</g,'&lt;')+'</label>'});
+h+='<div class="ex" id="e'+i+'" style="display:none;margin-top:.5em"></div></div>'});
+box.innerHTML=h;
+function verifier(){let ok=0;Q.forEach((q,i)=>{const r=document.querySelector('input[name=q'+i+']:checked');const e=document.getElementById('e'+i);
+e.style.display='block';if(r&&+r.value===q.bonne){ok++;e.innerHTML='✅ Richtig. '+q.explication}else{e.innerHTML='❌ Die richtige Antwort: <b>'+q.choix[q.bonne]+'</b>. '+q.explication}});
+document.getElementById('score').textContent='Punktzahl: '+ok+' / '+Q.length;window.scrollTo(0,document.body.scrollHeight)}
+function refaire(){location.reload()}</script></body></html>
